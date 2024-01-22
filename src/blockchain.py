@@ -10,6 +10,7 @@ class Blockchain(object):
 
         self.new_block(previous_hash=1, proof=100)
 
+    # creates a new block at the end of the chain
     def new_block(self, proof, previous_hash=None):
         block = {
             'index': len(self.chain) + 1,
@@ -25,6 +26,7 @@ class Blockchain(object):
         self.chain.append(block)
         return block
 
+    # add a transaction for the next block
     def new_transaction(self, sender, recipient, amount):
         self.current_transactions.append({
             'sender': sender,
@@ -34,6 +36,7 @@ class Blockchain(object):
 
         return self.last_block['index'] + 1
 
+    # generates a save proof
     def proof_of_work(self, last_proof):
         proof = 0
 

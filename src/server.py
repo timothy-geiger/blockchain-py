@@ -64,6 +64,7 @@ def new_transaction():
     return jsonify(response), 201
 
 
+# returns the whole chain
 @app.route('/chain', methods=['GET'])
 def full_chain():
     response = {
