@@ -13,10 +13,12 @@ class Blockchain(object):
 
         self.new_block(previous_hash=1, proof=100)
 
+    # register a node
     def register_node(self, address):
         parsed_url = urlparse(address)
         self.nodes.add(parsed_url.netloc)
 
+    # checks wheather the current chain is valid
     def valid_chain(self, chain):
         last_block = chain[0]
         current_index = 1
@@ -37,6 +39,7 @@ class Blockchain(object):
 
         return True
 
+    # Get the newest/longest chain
     def resolve_conflicts(self):
         neighbours = self.nodes
         new_chain = None
